@@ -3,6 +3,8 @@
 namespace Interval;
 
 use DateInterval;
+use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use Interval\Exception\InvalidIntervalFormat;
 
@@ -30,7 +32,7 @@ class Interval
 
     /**
      * @param $value
-     * @return false
+     * @return bool
      */
     public static function validate($value)
     {
@@ -53,8 +55,9 @@ class Interval
 
     /**
      * @param string $intervalStr
-     * @param DateTimeInterface $dateTime
-     * @return DateTimeInterface
+     * @param $dateTime
+     * @return DateTimeInterface|DateTimeImmutable|DateTime
+     * @throws InvalidIntervalFormat
      */
     public static function getDateTimeFromInterval($intervalStr, $dateTime)
     {
@@ -63,8 +66,8 @@ class Interval
     }
 
     /**
-     * @param DateTimeInterface $dateTime
-     * @return DateTimeInterface
+     * @param DateTimeInterface|DateTimeImmutable|DateTime $dateTime
+     * @return DateTimeInterface|DateTimeImmutable|DateTime
      */
     public function getDate($dateTime)
     {
